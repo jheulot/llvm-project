@@ -368,6 +368,10 @@ public:
   /// default, if an action fails, a message is printed out to stderr.
   void setPrintErrorMessage(bool PrintErrorMessage);
 
+  /// Sets whether an log message should be printed out before actions. By
+  /// default, when starting an action, a message is printed out to stderr.
+  void setPrintLogMessage(bool PrintLogMessage);
+
   /// Returns the file manager used in the tool.
   ///
   /// The file manager is shared between all translation units.
@@ -394,6 +398,7 @@ private:
   DiagnosticConsumer *DiagConsumer = nullptr;
 
   bool PrintErrorMessage = true;
+  bool PrintLogMessage = true;
 };
 
 template <typename T>

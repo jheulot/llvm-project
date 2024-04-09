@@ -611,7 +611,7 @@ int ClangTool::run(ToolAction *Action) {
 
       // FIXME: We need a callback mechanism for the tool writer to output a
       // customized message for each file.
-      if (NumOfTotalFiles > 1)
+      if (PrintLogMessage && NumOfTotalFiles > 1)
         llvm::errs() << "[" + std::to_string(++ProcessedFileCounter) + "/" +
                             std::to_string(NumOfTotalFiles) +
                             "] Processing file " + File
@@ -673,6 +673,10 @@ int ClangTool::buildASTs(std::vector<std::unique_ptr<ASTUnit>> &ASTs) {
 
 void ClangTool::setPrintErrorMessage(bool PrintErrorMessage) {
   this->PrintErrorMessage = PrintErrorMessage;
+}
+
+void ClangTool::setPrintLogMessage(bool PrintLogMessage) {
+  this->PrintLogMessage = PrintLogMessage;
 }
 
 namespace clang {
